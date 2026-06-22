@@ -221,15 +221,13 @@ def main():
     ).astype(np.float32)
     print(f"      Done ({time.time()-t:.1f}s)")
 
-    # ── Step 3: Cosine similarity (dot product since both are LS2-normalized) ──
+    # ── Step 3: Cosine similarity (dot product since both are L2-normalized) ──
     print(f"[3/5] Computing cosine similarity for {len(cand_ids):,} candidates...")
     t = time.time()
     scores_semantic = embeddings @ jd_vec   # shape (N,)
     print(f"      Done ({time.time()-t:.1f}s)")
 
     # Top-SHORTLIST_K semantic candidates for deep scoring
-    #SHORTLIST_K = min(1000, len(scores_semantic))
-
     top_idx = np.argpartition(scores_semantic, -SHORTLIST_K)[-SHORTLIST_K:]
     top_idx = top_idx[np.argsort(scores_semantic[top_idx])[::-1]]   # sorted desc
     print(f"      Shortlisted top {SHORTLIST_K}")
