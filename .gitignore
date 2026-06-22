@@ -1,0 +1,25 @@
+# data files (too large for git)
+candidates.jsonl
+candidates.jsonl.gz
+output/embeddings.npy
+output/candidate_ids.npy
+
+# venv
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# keep output folder but not generated files
+output/*
+!output/.gitkeep
