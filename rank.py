@@ -228,6 +228,8 @@ def main():
     print(f"      Done ({time.time()-t:.1f}s)")
 
     # Top-SHORTLIST_K semantic candidates for deep scoring
+    SHORTLIST_K = min(1000, len(scores_semantic))
+
     top_idx = np.argpartition(scores_semantic, -SHORTLIST_K)[-SHORTLIST_K:]
     top_idx = top_idx[np.argsort(scores_semantic[top_idx])[::-1]]   # sorted desc
     print(f"      Shortlisted top {SHORTLIST_K}")
